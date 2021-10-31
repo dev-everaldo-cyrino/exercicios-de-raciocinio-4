@@ -15,6 +15,7 @@ class gato:
         self.dias=0
         self.brincar=0
         print('você acaba de ganhar um gato, huuummmmm')
+        self.status(self)
     def alimentar(self):
         print('''
                 -----oções de comidas-----
@@ -52,6 +53,7 @@ class gato:
             self.sono -=100
             self.sono += 50
             self.estado = 'gato gordo do pai'
+        self.status(self)
         
     def interagir(self):
         print('''
@@ -98,6 +100,7 @@ class gato:
             self.sono += 100
             self.fome += 100
             self.estado = 'quase morto'
+        self.status(self)
             
     def dormir(self):
         mimir = self.sono
@@ -112,8 +115,17 @@ class gato:
         print('fome {} >> {}'.format(self.fome - 60,self.fome))
         print('dias {} >> {}'.format(self.dias-1,self.dias))
         print('..............................................')
+        self.status(self)
         
     def status(self):
+        if self.sono < 0:
+            self.sono =0
+        if self.fome < 0:
+            self.fome =0
+        if self.fome > 100:
+            self.fome =100
+        if self.sono > 100:
+            self.sono =100
         print('''
                 -----status-----
                 fadiga: {}
@@ -121,3 +133,4 @@ class gato:
                 diversão: {}
                 dias: {}
                 status do gato: {}'''.format(self.sono,self.fome,self.brincar,self.dias,self.estado))
+        print('.............................')
